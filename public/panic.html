@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Panic Button</title>
+      <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body>
+      <div class="navbar">
+        <h1 style="margin-left: 20px">PANIC BUTTON</h1><h1 style="float: right;margin-right: 20px" href="#"><i class="fa fa-sign-in"" style="font-size:20px;color:white;"></i></h1>
+</div>
+     <div class="round-button" style="margin-top: 60%;margin-left: 20%">
+      <div class="round-button-circle">
+      <a id="sos" class="round-button" onclick="buttonClicked()">S.O.S</a>
+      </div>
+     </div>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+     <script>
+       var socket = io.connect();
+       
+       function buttonClicked(){
+         var keterangan = document.getElementById('sos');
+         if (keterangan.innerHTML === 'S.O.S') {
+              keterangan.innerHTML = 'SAFE';
+              keterangan.style.background = 'green';
+         }
+           else {
+                keterangan.innerHTML = 'S.O.S';
+                keterangan.style.background = '#ff4d4d';
+           }
+         socket.emit('clicked');
+       }       
+    </script>
+   </body>
+</html>
